@@ -14,15 +14,15 @@ return {
         },
         lazy = false, -- the plugin lazy-initialises itself
         keys = {
-                { "ff", function() require("fff").find_files() end, desc = "FFFind files" },
-                { "fg", function() require("fff").live_grep() end, desc = "LiFFFe grep" },
+                { "-f", function() require("fff").find_files() end, desc = "FFFind files" },
+                { "-g", function() require("fff").live_grep() end, desc = "LiFFFe grep" },
                 {
-                        "fz",
+                        "-z",
                         function() require("fff").live_grep { grep = { modes = { "fuzzy", "plain" } } } end,
                         desc = "Live fffuzy grep",
                 },
                 {
-                        "fw",
+                        "-w",
                         function() require("fff").live_grep_under_cursor() end,
                         mode = { "n", "x" },
                         desc = "Search current word / selection",
