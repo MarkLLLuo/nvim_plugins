@@ -1,3 +1,7 @@
 astrolsp.lua
 astrocore.lua
 astroui.lua
+mason.lua
+none-ls.lua
+treesitter.lua
+user.lua
