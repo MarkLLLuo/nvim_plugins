@@ -1,4 +1,4 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+-- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
 -- AstroLSP allows you to customize the features in AstroNvim's LSP configuration engine
 -- Configuration documentation can be found with `:h astrolsp`
@@ -45,6 +45,28 @@ return {
                 ---@diagnostic disable: missing-fields
                 config = {
                         clangd = { capabilities = { offsetEncoding = "utf-8" } },
+                        -- vim.lsp.config("ty", {
+                        --         settings = {
+                        --                 ty = {
+                        --                         -- ty language server settings go here
+                        --                         inlayHints = {
+                        --                                 variableTypes = true,
+                        -- callArgumentNames = true,
+                        --                         },
+                        --                 },
+                        --         },
+                        -- }),
+                        vim.lsp.config("ty", {
+                                settings = {
+                                        ty = {
+                                                inlayHints = {
+                                                        variableTypes = true,
+                                                        callArgumentNames = true,
+                                                },
+                                        },
+                                },
+                        }),
+                        vim.lsp.enable "ty",
                 },
                 -- customize how language servers are attached
                 handlers = {
@@ -101,6 +123,7 @@ return {
                 -- A custom `on_attach` function to be run after the default `on_attach` function
                 -- takes two parameters `client` and `bufnr`  (`:h lspconfig-setup`)
                 on_attach = function(client, bufnr)
+                        -- require("inlay-hints").on_attach(client, bufnr)
                         -- this would disable semanticTokensProvider for all clients
                         -- client.server_capabilities.semanticTokensProvider = nil
                 end,
